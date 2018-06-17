@@ -2,22 +2,23 @@ import cv2
 from managers import WindowManager, CaptureManager
 
 
-class Cameo(object):
+class PyCam(object):
+
     def __init__(self):
-        self._windowManager = WindowManager('Cameo', self.onKeypress)
+        self._windowManager = WindowManager('PyCamClass', self.onKeypress)
         self._captureManager = CaptureManager(
         cv2.VideoCapture(0), self._windowManager, True)
+
     def run(self):
         """Run the main loop."""
         self._windowManager.createWindow()
         while self._windowManager.isWindowCreated:
             self._captureManager.enterFrame()
             frame = self._captureManager.frame
-            # TODO: Filter the frame (Chapter 3).
             self._captureManager.exitFrame()
             self._windowManager.processEvents()
 
-    def onKeypress (self, keycode):
+    def onKeypress(self, keycode):
         """Handle a keypress.
         space -> Take a screenshot.
         tab
@@ -33,5 +34,7 @@ class Cameo(object):
                 self._captureManager.stopWritingVideo()
         elif keycode == 27: # escape
             self._windowManager.destroyWindow()
-if __name__=="__main__":
-    Cameo().run()
+
+
+if __name__ == "__main__":
+    PyCam().run()
