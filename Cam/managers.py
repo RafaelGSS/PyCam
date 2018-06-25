@@ -11,7 +11,6 @@ class CaptureManager(object):
         self.shouldMirrorPreview = shouldMirrorPreview
 
         self._capture = capture
-        self._channel = 0
 
         self._enteredFrame = False
         self._frame = None
@@ -26,16 +25,6 @@ class CaptureManager(object):
         self._framesElapsed = 0
         self._fpsEstimate = None
     
-    @property
-    def channel(self):
-        return self._channel
-
-    @channel.setter
-    def channel(self, value):
-        if self._channel != value:
-            self._channel = value
-            self._frame = None
-
     @property
     def frame(self):
         if self._enteredFrame and self._frame is None:
@@ -139,8 +128,8 @@ class CaptureManager(object):
 
 class WindowManager(object):
 
-    def __init__(self, windowName, keypresssCallback = None):
-        self.keypresssCallback = keypresssCallback
+    def __init__(self, windowName, keypresssCallback=None):
+        self.keypressCallback = keypresssCallback
 
         self._windowName = windowName
         self._isWindowCreated = False
@@ -162,7 +151,7 @@ class WindowManager(object):
 
     def processEvents(self):
         keycode = cv2.waitKey(1)
-        if self.keypresssCallback is not None and keycode != -1:
+        if self.keypressCallback is not None and keycode != -1:
             # Discard any non-ASCII info encoded by GTK.
             keycode &= 0xFF
             self.keypressCallback(keycode)
