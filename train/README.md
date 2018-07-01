@@ -1,0 +1,1 @@
+To train execute the script train_faces, in test foder.

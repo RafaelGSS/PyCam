@@ -1,6 +1,6 @@
 import cv2
 import numpy
-from Cam import utils
+from app import utils
 
 
 class VStrokeEdges(object):

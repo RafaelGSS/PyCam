@@ -1,7 +1,7 @@
 import cv2
-from Cam.managers import WindowManager, CaptureManager
-from Cam import filters
-from Cam.recognition.PyWhoIs import PyWhoIs
+from app.managers import WindowManager, CaptureManager
+from app import filters
+from app.recognition.whois import PyWhoIs
 
 
 class PyCam(object):
