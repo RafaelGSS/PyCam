@@ -26,7 +26,7 @@ class PyCam(object):
                 self.applyFilter(frame)
 
             if self._enabledDetectFaces:
-                self._recognizer.detectFaces(frame)
+                self._recognizer.detectFaces(frame, recognition=True)
 
             self._captureManager.exitFrame()
             self._windowManager.processEvents()

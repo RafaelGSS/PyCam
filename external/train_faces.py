@@ -58,7 +58,7 @@ def train_face():
     [X,y] = read_faces()
     Y = np.asanyarray(y, dtype=np.int32)
 
-    model = cv2.face.EigenFaceRecognizer_create()
+    model = cv2.face.LBPHFaceRecognizer_create()
     model.train(np.asarray(X), np.asarray(y))
     model.save('../train/model_{}.xml'.format(name_file))
     print('Saved with name: {}'.format(name_file))
